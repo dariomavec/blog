@@ -1,13 +1,13 @@
-baseURL = "http://127.0.0.1:4321/"
+baseurl = "/"
 languageCode = "en-us"
-title = "A Hugo website"
+title = "Chance Wanders"
 theme = "simple-a"
 googleAnalytics = ""
-disqusShortname = ""
+disqusShortname = "chancewanders"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [permalinks]
-    post = "/:year/:month/:day/:slug/"
+    post = "/:slug/"
 
 [[menu.main]]
     name = "About"

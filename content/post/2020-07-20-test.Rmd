@@ -1,0 +1,11 @@
+---
+title: "Test Post"
+author: "Dario Mavec"
+date: 2020-07-20
+categories: ["R"]
+tags: ["test"]
+---
+
+# This is a test post
+
+Just testing over here!
