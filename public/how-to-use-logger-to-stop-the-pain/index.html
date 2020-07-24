@@ -2,7 +2,7 @@
 	<!doctype html>
 <html lang="en">
   <head>
-    <title>Test Post</title>
+    <title>How to use logger to stop the pain  - Chance Wanders | Dario Mavec</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
@@ -13,10 +13,11 @@
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="">
-    <link rel="canonical" href="/test-post/">
+    <link rel="canonical" href="https://blog.mavec.me/how-to-use-logger-to-stop-the-pain/">
 
     
     <link href="/rss.xml" type="application/atom+xml" rel="alternate" title="Chance Wanders">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/an-old-hope.min.css">
 
   </head>
   <body>
@@ -24,6 +25,7 @@
   <div id="navbar-inner">
     <div id="logo">
        <a href=""><img src="/images/header.png" title="Sandals by Claudia Lo Giudice from the Noun Project" width="100px"></img></a>
+       <p></p>
     </div>
   </div>
 </div>
@@ -39,13 +41,13 @@
 	    
 	  <div class="post">
 	    <header class="post-header">
-	        <h1><a href="/test-post/">Test Post</a></h1>
+	        <h1><a href="/how-to-use-logger-to-stop-the-pain/">How to use logger to stop the pain</a></h1>
 	        <div class="post-time">July 20 2020</div>
 	    </header>
 	    <div class="post-after">
 	        <div class="tags">
 	            
-	                <a href="//tags/test">test</a>
+	                <a href="https://blog.mavec.me//tags/logger">logger</a>
 	            
 	        </div>
 	    </div>
@@ -54,18 +56,26 @@
 	        
 
 
-<div id="this-is-a-test-post" class="section level1">
-<h1>This is a test post</h1>
-<p>Just testing over here!</p>
+<div id="the-forest" class="section level1">
+<h1>The Forest</h1>
+<p>Imagine with me a moment.</p>
+<p>You’ve spent all day writing killer R code. It has been a blur of data munging, model tweaks and picture perfect analysis outputs, using test data.</p>
+<p>The clock hits 6pm, and you set your code running against the full dataset. By your estimate, it should take about 8 hours to run. Perfect! You can start fresh in the morning with a big, strong coffee. Only when you start the next day, you discover that the job has failed. Worse than that, the application crashed so you can’t even get any information on what caused the crash.</p>
+<p>Uhoh… Time for a day of tinkering away at code, trying to figure out what went wrong. Maybe you make a few fixes and try again that night, only to discover it crashes <strong>again</strong>. At this point, you might as well swap the console for the 9-tails - it can’t be more painful!</p>
+</div>
+<div id="logs-to-the-rescue" class="section level1">
+<h1>Logs to the rescue! 🌲</h1>
+<p>Using the excellent <a href="https://github.com/daroczig/logger">logger</a> package, we can gather way more information about our complex jobs plus have a bit of fun along the way.</p>
+<pre class="r"><code>if (!require(&quot;logger&quot;)) install.packages(&quot;logger&quot;)
+library(logger)</code></pre>
+<p>Test some more code</p>
+<pre class="r"><code>x &lt;- function(y, z) {
+  y + z
+}</code></pre>
 </div>
 
 	    </div>
 	    
-	<div class="about">
-	<p> 
-     
-    </p>
-</div>
 		<nav id="pagination">
 			
 			
@@ -96,5 +106,10 @@
 </script>
 
 
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </html>
 

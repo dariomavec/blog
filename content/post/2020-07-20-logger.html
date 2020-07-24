@@ -1,0 +1,27 @@
+---
+title: "How to use logger to stop the pain"
+author: "Dario Mavec"
+date: 2020-07-20
+categories: ["R"]
+tags: ["logger"]
+---
+
+
+
+<div id="the-forest" class="section level1">
+<h1>The Forest</h1>
+<p>Imagine with me a moment.</p>
+<p>You’ve spent all day writing killer R code. It has been a blur of data munging, model tweaks and picture perfect analysis outputs, using test data.</p>
+<p>The clock hits 6pm, and you set your code running against the full dataset. By your estimate, it should take about 8 hours to run. Perfect! You can start fresh in the morning with a big, strong coffee. Only when you start the next day, you discover that the job has failed. Worse than that, the application crashed so you can’t even get any information on what caused the crash.</p>
+<p>Uhoh… Time for a day of tinkering away at code, trying to figure out what went wrong. Maybe you make a few fixes and try again that night, only to discover it crashes <strong>again</strong>. At this point, you might as well swap the console for the 9-tails - it can’t be more painful!</p>
+</div>
+<div id="logs-to-the-rescue" class="section level1">
+<h1>Logs to the rescue! 🌲</h1>
+<p>Using the excellent <a href="https://github.com/daroczig/logger">logger</a> package, we can gather way more information about our complex jobs plus have a bit of fun along the way.</p>
+<pre class="r"><code>if (!require(&quot;logger&quot;)) install.packages(&quot;logger&quot;)
+library(logger)</code></pre>
+<p>Test some more code</p>
+<pre class="r"><code>x &lt;- function(y, z) {
+  y + z
+}</code></pre>
+</div>

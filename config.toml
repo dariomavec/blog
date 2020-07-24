@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://blog.mavec.me/"
 languageCode = "en-us"
 title = "Chance Wanders"
 theme = "simple-a"
