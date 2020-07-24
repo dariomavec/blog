@@ -3,7 +3,7 @@ title: "R, logger and a better way to work"
 author: "Dario Mavec"
 date: 2020-07-20
 categories: ["R"]
-tags: ["logger"]
+tags: ["logger", "R", "glue"]
 ---
 
 # The Forest

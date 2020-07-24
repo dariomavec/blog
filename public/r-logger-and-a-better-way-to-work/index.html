@@ -1,4 +1,3 @@
-	
 	<!doctype html>
 <html lang="en">
   <head>
@@ -18,17 +17,23 @@
     
     <link href="/rss.xml" type="application/atom+xml" rel="alternate" title="Chance Wanders">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/an-old-hope.min.css">
+    
 
   </head>
   <body>
     <div class="navbar navbar-fixed-top">
   <div id="navbar-inner">
     <div id="logo">
-       <a href=""><img src="/images/header.png" title="Sandals by Claudia Lo Giudice from the Noun Project" width="100px"></img></a>
-       <p></p>
-    </div>
+     <a href="/"><img src="/images/header.png" title="Sandals by Claudia Lo Giudice from the Noun Project" width="100px"></img></a>
   </div>
+      <div class="menu-header content">
+        <a href="/">
+          <h1>Random Strolls</h1>
+        </a>
+      </div>
+    </div>
 </div>
+
 
 
 <div class="container">
@@ -47,7 +52,11 @@
 	    <div class="post-after">
 	        <div class="tags">
 	            
-	                <a href="//tags/logger">logger</a>
+	                <a href="/tags/logger">logger</a>
+	            
+	                <a href="/tags/r">R</a>
+	            
+	                <a href="/tags/glue">glue</a>
 	            
 	        </div>
 	    </div>
@@ -71,30 +80,30 @@ library(logger)
 
 log_debug(&quot;I&#39;m a sneaky little log&quot;)
 log_success(&quot;I&#39;m a happy little log&quot;)
-## SUCCESS [2020-07-24 12:24:58] I&#39;m a happy little log
+## SUCCESS [2020-07-24 15:32:55] I&#39;m a happy little log
 log_info(&quot;I&#39;m a friendly little log&quot;)
-## INFO [2020-07-24 12:24:58] I&#39;m a friendly little log
+## INFO [2020-07-24 15:32:55] I&#39;m a friendly little log
 log_warn(&quot;I&#39;m a worrying little log&quot;)
-## WARN [2020-07-24 12:24:58] I&#39;m a worrying little log
+## WARN [2020-07-24 15:32:55] I&#39;m a worrying little log
 log_error(&quot;I&#39;m a scary little log&quot;)
-## ERROR [2020-07-24 12:24:58] I&#39;m a scary little log
+## ERROR [2020-07-24 15:32:55] I&#39;m a scary little log
 log_fatal(&quot;Uhoh! I&#39;m a dead little log&quot;)
-## FATAL [2020-07-24 12:24:58] Uhoh! I&#39;m a dead little log</code></pre>
+## FATAL [2020-07-24 15:32:55] Uhoh! I&#39;m a dead little log</code></pre>
 <p>Now you may be asking, why can’t I just use <code>print()</code> or <code>message()</code> like I always have? Well I’m glad you asked! Let me show you the benefits.</p>
 <p>First, the obvious stuff. Every messages now comes with a timestamp, which can be incredibly useful for identifying and improving slow code. We also have a bunch of different severity levels for the messages which allow us to be much more nuanced with our logging. I find it useful to use <code>log_debug()</code> as I’m developing and just go totally nuts with how many logs I include. By default these messages won’t appear, however by changing the log threshold we can see them:</p>
 <pre class="r"><code>log_debug(&quot;You can&#39;t see me!&quot;)
 log_threshold(DEBUG)
 log_debug(&quot;Oh noes!&quot;)
-## DEBUG [2020-07-24 12:24:58] Oh noes!</code></pre>
+## DEBUG [2020-07-24 15:32:55] Oh noes!</code></pre>
 <div id="adding-variables" class="section level2">
 <h2>Adding Variables</h2>
 <p>Now for some of the niftier features! The log functions come with <a href="https://github.com/tidyverse/glue">glue</a> strings enabled by default. Glue adds Python-like string interpolation, which simply means we can refer to variables inside the string using <code>{}</code> marks. Anything inside of the brackets will get evaluated and, assuming its printable, added to the string.</p>
 <pre class="r"><code>for (i in 1:3) {
  log_info(&quot;i = {i}&quot;) 
 }
-## INFO [2020-07-24 12:24:58] i = 1
-## INFO [2020-07-24 12:24:58] i = 2
-## INFO [2020-07-24 12:24:58] i = 3</code></pre>
+## INFO [2020-07-24 15:32:55] i = 1
+## INFO [2020-07-24 15:32:55] i = 2
+## INFO [2020-07-24 15:32:55] i = 3</code></pre>
 </div>
 <div id="log-to-file" class="section level2">
 <h2>Log to File</h2>
@@ -108,6 +117,26 @@ log_debug(&quot;Oh noes!&quot;)
 			
 			
 		</nav>
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "chancewanders" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 	
 		        <footer>
 		        	Built with <a href="https://github.com/spf13/hugo">Hugo</a> | Theme <a href="https://github.com/AlexFinn/simple-a">Simple A</a>

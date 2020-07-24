@@ -12,11 +12,29 @@
     
     
     <item>
+      <title>glue</title>
+      <link>/tags/glue/</link>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/glue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>logger</title>
       <link>/tags/logger/</link>
       <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/logger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
