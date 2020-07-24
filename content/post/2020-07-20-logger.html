@@ -24,15 +24,15 @@ library(logger)
 
 log_debug(&quot;I&#39;m a sneaky little log&quot;)
 log_success(&quot;I&#39;m a happy little log&quot;)
-## SUCCESS [2020-07-24 16:11:04] I&#39;m a happy little log
+## SUCCESS [2020-07-24 16:12:41] I&#39;m a happy little log
 log_info(&quot;I&#39;m a friendly little log&quot;)
-## INFO [2020-07-24 16:11:04] I&#39;m a friendly little log
+## INFO [2020-07-24 16:12:41] I&#39;m a friendly little log
 log_warn(&quot;I&#39;m a worrying little log&quot;)
-## WARN [2020-07-24 16:11:04] I&#39;m a worrying little log
+## WARN [2020-07-24 16:12:41] I&#39;m a worrying little log
 log_error(&quot;I&#39;m a scary little log&quot;)
-## ERROR [2020-07-24 16:11:04] I&#39;m a scary little log
+## ERROR [2020-07-24 16:12:41] I&#39;m a scary little log
 log_fatal(&quot;Uhoh! I&#39;m a dead little log&quot;)
-## FATAL [2020-07-24 16:11:04] Uhoh! I&#39;m a dead little log</code></pre>
+## FATAL [2020-07-24 16:12:41] Uhoh! I&#39;m a dead little log</code></pre>
 <p>Now you may be asking, why can’t you just use <code>print()</code> or <code>message()</code> like you always have? Well I’m glad you asked! Allow me to demonstrate some of the benefits.</p>
 <div id="the-benefits" class="section level2">
 <h2>The Benefits</h2>
@@ -40,7 +40,7 @@ log_fatal(&quot;Uhoh! I&#39;m a dead little log&quot;)
 <pre class="r"><code>log_debug(&quot;Nyah, you can&#39;t see me!&quot;)
 log_threshold(DEBUG)
 log_debug(&quot;Oh noes!&quot;)
-## DEBUG [2020-07-24 16:11:04] Oh noes!</code></pre>
+## DEBUG [2020-07-24 16:12:41] Oh noes!</code></pre>
 </div>
 <div id="string-interpolation" class="section level2">
 <h2>String Interpolation</h2>
@@ -48,9 +48,9 @@ log_debug(&quot;Oh noes!&quot;)
 <pre class="r"><code>for (i in 1:3) {
  log_info(&quot;i = {i}&quot;) 
 }
-## INFO [2020-07-24 16:11:04] i = 1
-## INFO [2020-07-24 16:11:04] i = 2
-## INFO [2020-07-24 16:11:04] i = 3</code></pre>
+## INFO [2020-07-24 16:12:41] i = 1
+## INFO [2020-07-24 16:12:41] i = 2
+## INFO [2020-07-24 16:12:41] i = 3</code></pre>
 <p>Suddenly we have a super easy way to track progress when processing large loops. Another great alternative for monitoring loops is the <code>progress</code> package, which Dan has a great intro to over <a href="http://gradientdescending.com/fun-with-progress-bars-fish-daggers-and-the-star-wars-trench-run/">here</a>.</p>
 </div>
 <div id="log-to-file" class="section level2">
@@ -58,7 +58,7 @@ log_debug(&quot;Oh noes!&quot;)
 <p>Logging to console is all well and good, but in our scenario we’ve had a double calamity and our process has completely died. That means no more nice console messages. Fortunately we can simultaneously output to file and console at the same time with the nifty <code>appender_tee()</code>.</p>
 <pre class="r"><code>log_appender(appender_tee(&quot;path/to/my/log_file.log&quot;))</code></pre>
 <pre class="r"><code>log_info(&quot;Woah, I&#39;m in two places at once...&quot;)
-## INFO [2020-07-24 16:11:04] Woah, I&#39;m in two places at once...</code></pre>
+## INFO [2020-07-24 16:12:41] Woah, I&#39;m in two places at once...</code></pre>
 <p>When a process fails we now have a file we can look at. Also, it’s now possible for any member of a team to check on the status of a long running job.</p>
 <p>If you want to get <strong>really</strong> fancy, you can even shoot the logs over to a Slack channel using <code>appender_slack()</code>. I would recommend only doing this for <code>SUCCESS</code> or <code>ERROR</code> level messages, otherwise you might end up with hella spam.</p>
 </div>
