@@ -3,37 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.mavec.me/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/</loc>
+    <loc>/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/how-to-use-logger-to-stop-the-pain/</loc>
+    <loc>/tags/logger/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/tags/logger/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/post/</loc>
+    <loc>/categories/r/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/categories/r/</loc>
+    <loc>/r-logger-and-a-better-way-to-work/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.mavec.me/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-07-20T00:00:00+00:00</lastmod>
   </url>
   

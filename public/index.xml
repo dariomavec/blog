@@ -1,17 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
       <title>Chance Wanders on Chance Wanders </title>
-    <link>https://blog.mavec.me/</link>
+    <link>/</link>
     <language>en-us</language>
     <author>Alexander Ivanov</author>
     <updated>2020-07-20 00:00:00 &#43;0000 UTC</updated>
     
     <item>
       <title>Posts</title>
-      <link>https://blog.mavec.me/post/</link>
+      <link>/post/</link>
       <pubDate>Mon, 20 Jul 2020 00:00:00 UTC</pubDate>
       <author>Alexander Ivanov</author>
-      <guid>https://blog.mavec.me/post/</guid>
+      <guid>/post/</guid>
       <description></description>
     </item>
     

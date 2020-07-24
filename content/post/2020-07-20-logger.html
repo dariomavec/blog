@@ -1,5 +1,5 @@
 ---
-title: "How to use logger to stop the pain"
+title: "R, logger and a better way to work"
 author: "Dario Mavec"
 date: 2020-07-20
 categories: ["R"]
@@ -13,15 +13,43 @@ tags: ["logger"]
 <p>Imagine with me a moment.</p>
 <p>You’ve spent all day writing killer R code. It has been a blur of data munging, model tweaks and picture perfect analysis outputs, using test data.</p>
 <p>The clock hits 6pm, and you set your code running against the full dataset. By your estimate, it should take about 8 hours to run. Perfect! You can start fresh in the morning with a big, strong coffee. Only when you start the next day, you discover that the job has failed. Worse than that, the application crashed so you can’t even get any information on what caused the crash.</p>
-<p>Uhoh… Time for a day of tinkering away at code, trying to figure out what went wrong. Maybe you make a few fixes and try again that night, only to discover it crashes <strong>again</strong>. At this point, you might as well swap the console for the 9-tails - it can’t be more painful!</p>
+<p>Uhoh… Time for a day of tinkering away at code, trying to figure out what went wrong. Maybe you make a few fixes and try again that night, only to discover it crashes <strong>again</strong>. At this point, you might as well swap the console for the 9-tails - it can’t be any more painful!</p>
 </div>
 <div id="logs-to-the-rescue" class="section level1">
 <h1>Logs to the rescue! 🌲</h1>
-<p>Using the excellent <a href="https://github.com/daroczig/logger">logger</a> package, we can gather way more information about our complex jobs plus have a bit of fun along the way.</p>
+<p>Using the excellent <a href="https://github.com/daroczig/logger">logger</a> package, we can gather way more information about our jobs and make our lives a bit easier. Once loaded we can start using the suite of <code>log_*()</code> functions to track important steps in our functions.</p>
 <pre class="r"><code>if (!require(&quot;logger&quot;)) install.packages(&quot;logger&quot;)
-library(logger)</code></pre>
-<p>Test some more code</p>
-<pre class="r"><code>x &lt;- function(y, z) {
-  y + z
-}</code></pre>
+library(logger)
+
+log_debug(&quot;I&#39;m a sneaky little log&quot;)
+log_success(&quot;I&#39;m a happy little log&quot;)
+## SUCCESS [2020-07-24 12:24:58] I&#39;m a happy little log
+log_info(&quot;I&#39;m a friendly little log&quot;)
+## INFO [2020-07-24 12:24:58] I&#39;m a friendly little log
+log_warn(&quot;I&#39;m a worrying little log&quot;)
+## WARN [2020-07-24 12:24:58] I&#39;m a worrying little log
+log_error(&quot;I&#39;m a scary little log&quot;)
+## ERROR [2020-07-24 12:24:58] I&#39;m a scary little log
+log_fatal(&quot;Uhoh! I&#39;m a dead little log&quot;)
+## FATAL [2020-07-24 12:24:58] Uhoh! I&#39;m a dead little log</code></pre>
+<p>Now you may be asking, why can’t I just use <code>print()</code> or <code>message()</code> like I always have? Well I’m glad you asked! Let me show you the benefits.</p>
+<p>First, the obvious stuff. Every messages now comes with a timestamp, which can be incredibly useful for identifying and improving slow code. We also have a bunch of different severity levels for the messages which allow us to be much more nuanced with our logging. I find it useful to use <code>log_debug()</code> as I’m developing and just go totally nuts with how many logs I include. By default these messages won’t appear, however by changing the log threshold we can see them:</p>
+<pre class="r"><code>log_debug(&quot;You can&#39;t see me!&quot;)
+log_threshold(DEBUG)
+log_debug(&quot;Oh noes!&quot;)
+## DEBUG [2020-07-24 12:24:58] Oh noes!</code></pre>
+<div id="adding-variables" class="section level2">
+<h2>Adding Variables</h2>
+<p>Now for some of the niftier features! The log functions come with <a href="https://github.com/tidyverse/glue">glue</a> strings enabled by default. Glue adds Python-like string interpolation, which simply means we can refer to variables inside the string using <code>{}</code> marks. Anything inside of the brackets will get evaluated and, assuming its printable, added to the string.</p>
+<pre class="r"><code>for (i in 1:3) {
+ log_info(&quot;i = {i}&quot;) 
+}
+## INFO [2020-07-24 12:24:58] i = 1
+## INFO [2020-07-24 12:24:58] i = 2
+## INFO [2020-07-24 12:24:58] i = 3</code></pre>
+</div>
+<div id="log-to-file" class="section level2">
+<h2>Log to File</h2>
+<p>Logging to console is all well and good, but in our starting example</p>
+</div>
 </div>
