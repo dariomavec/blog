@@ -51,7 +51,15 @@ for (i in 1:3) {
 }
 ```
 
+Suddenly we have a super easy way to track progress when processing large loops. Another great alternative for monitoring loops is the `progress` package, which Dan has a great intro to over [here](http://gradientdescending.com/fun-with-progress-bars-fish-daggers-and-the-star-wars-trench-run/).
+
 ## Log to File
 
-Logging to console is all well and good, but in our starting example
+Logging to console is all well and good, but in our scenario we've had a double calamity and our process has completely died. That means no more nice console messages. Fortunately we can simultaneously output to file and console at the same time with the nifty `appender_tee()`.
 
+```{r, eval=FALSE}
+log_appender(appender_tee("path/to/my/log_file.log"))
+```
+```{r, collapse=TRUE}
+log_info("Woah, I'm in two places at once...")
+```
