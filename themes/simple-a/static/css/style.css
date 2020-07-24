@@ -181,6 +181,18 @@ p {
   border:none;
 }
 
+.post-footer a {
+    font-size: 1em;
+    color: #000000;
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.post-footer a:hover {
+  text-decoration: none;
+  border:none;
+}
+
 .menu-header {
   padding: 10px 40px 10px 40px;
   text-align: center;
