@@ -1,0 +1,185 @@
+	<!doctype html>
+<html lang="en">
+  <head>
+    <title>R Art - Varsarely  - Random Strolls | Dario Mavec</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    
+    <link href="/css/milk.min.css" rel="stylesheet">
+    <link href="/css/milk-responsive.min.css" rel="stylesheet">     
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="">
+    <link rel="canonical" href="/r-art-varsarely/">
+
+    
+    <link href="/rss.xml" type="application/atom+xml" rel="alternate" title="Random Strolls">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/an-old-hope.min.css">
+    
+
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div id="navbar-inner">
+    <div id="logo">
+     <a href="/"><img src="/img/header.png" title="Sandals by Claudia Lo Giudice from the Noun Project" width="100px"></img></a>
+  </div>
+      <div class="menu-header content">
+        <a href="/">
+          <h1>Random Strolls</h1>
+        </a>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+  <div class="content">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="posts">
+
+
+	    
+	  <div class="post">
+	    <header class="post-header">
+	        <h1><a href="/r-art-varsarely/">R Art - Varsarely</a></h1>
+	        <div class="post-time">September 15 2020</div>
+	    </header>
+	    <div class="post-after">
+	        <div class="tags">
+	            
+	                <a href="//tags/r">R</a>
+	            
+	                <a href="//tags/tidy-tuesday">Tidy Tuesday</a>
+	            
+	        </div>
+	    </div>
+	    <hr>
+	    <div class="post content">
+	        
+
+
+<div id="varsarely" class="section level1">
+<h1>Varsarely</h1>
+<p><img src="img/canvasCards/01-varsarely.png" /></p>
+</div>
+<div id="creation-steps" class="section level1">
+<h1>Creation Steps</h1>
+<p><img src="img/canvasCards/01-varsarely.gif" /></p>
+</div>
+<div id="code" class="section level1">
+<h1>Code</h1>
+<pre class="r"><code>#&#39; Canvas 1
+#&#39; @import dplyr
+#&#39; @import tidyr
+#&#39; @import purrr
+#&#39; @importFrom glue glue
+canvas1 &lt;- function(
+  width = 300,
+  height = 500,
+  squareHeight = 10,
+  gutter = 10,
+  background_color = &#39;#FDF5E6&#39;,
+  square_color = &#39;#933A16&#39;,
+  square_color_shift = &#39;gray40&#39;,
+  file_name = &#39;canvas1&#39;,
+  ...
+  )
+{
+  plot_centre &lt;- c(width / 2, height / 2)
+
+  grid &lt;- expand_grid(
+    x = seq(0, width, by = squareHeight),
+    y = seq(0, height, by = squareHeight)
+  ) %&gt;%
+    mutate(
+      origin = map2(x, y, ~c(.x, .y)),
+      # likelihood = sqrt((plot_centre[1] - x) ** 2 +
+      #                   (plot_centre[2] - y) ** 2),
+      # rotate = runif(n()) &gt; (likelihood / max(likelihood)),
+      rotate = runif(n()) &lt; 0.05,
+      square = map2(origin, rotate, ~square_from_centre(.x, height = squareHeight - gutter / 2, rotate = .y))
+    ) %&gt;%
+    unnest(square) %&gt;%
+    rename(coords = square)
+
+  plot &lt;- grid %&gt;%
+    ggplot(aes(x = map_dbl(coords, 1),
+               y = map_dbl(coords, 2),
+               group = paste0(x, &#39;-&#39;, y))) +
+    geom_polygon(aes(fill = rotate), show.legend = FALSE) +
+    scale_fill_manual(values = c(square_color, square_color_shift)) +
+    theme_void() +
+    theme(
+      panel.background = element_rect(fill = background_color),
+      plot.background = element_rect(fill = background_color),
+      panel.grid = element_blank(),
+      panel.border = element_blank()
+      ) +
+    coord_equal()
+
+  save_plot(plot, file_name, height = height, width = width)
+}</code></pre>
+</div>
+
+	    </div>
+	    
+		<nav id="pagination">
+			
+			<a class="next" href="/making-art-with-r/">Next</a>
+		</nav>
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "randomstrolls" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
+		        <footer class='post-footer'>
+		        	Built with <a href="https://github.com/spf13/hugo">Hugo</a> | Theme <a href="https://github.com/AlexFinn/simple-a">Simple A</a> (<a href="https://github.com/AlexFinn">AlexFinn</a>)
+		          <p>© <a href="https://mavec.me/">Dario Mavec</a> 2020</p>
+		        </footer>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+    
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-173464547-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/r.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+

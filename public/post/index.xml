@@ -6,10 +6,29 @@
     <description>Recent content in Posts on Random Strolls</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>R Art - Varsarely</title>
+      <link>/r-art-varsarely/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/r-art-varsarely/</guid>
+      <description>Varsarely  Creation Steps  Code #&amp;#39; Canvas 1 #&amp;#39; @import dplyr #&amp;#39; @import tidyr #&amp;#39; @import purrr #&amp;#39; @importFrom glue glue canvas1 &amp;lt;- function( width = 300, height = 500, squareHeight = 10, gutter = 10, background_color = &amp;#39;#FDF5E6&amp;#39;, square_color = &amp;#39;#933A16&amp;#39;, square_color_shift = &amp;#39;gray40&amp;#39;, file_name = &amp;#39;canvas1&amp;#39;, ... ) { plot_centre &amp;lt;- c(width / 2, height / 2) grid &amp;lt;- expand_grid( x = seq(0, width, by = squareHeight), y = seq(0, height, by = squareHeight) ) %&amp;gt;% mutate( origin = map2(x, y, ~c(.</description>
+    </item>
+    
+    <item>
+      <title>Making Art with R</title>
+      <link>/making-art-with-r/</link>
+      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/making-art-with-r/</guid>
+      <description>Canvas Cards As a side project this year, I thought it would be fun to play around with making art in R. Because I’m not all that original, I will use an existing developer’s project as the guide for my development. In particular, Canvas Cards will be the basis of inspiration for each card.
+To stop this from being a pure copy paste exercise, I want to establish some constraints for this project:</description>
+    </item>
     
     <item>
       <title>R, logger and working smarter</title>
