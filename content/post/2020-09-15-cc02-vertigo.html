@@ -1,0 +1,100 @@
+---
+title: "R Art - Vertigo"
+author: "Dario Mavec"
+date: 2020-09-16
+categories: ["R"]
+tags: ["R", "Tidy Tuesday"]
+---
+
+
+
+<div id="vertigo" class="section level1">
+<h1>Vertigo</h1>
+<p>Since I already had done the work for generating squares and performing rotations,
+this card was pretty straightforward. It was a lot of fun playing with the
+different tweaking parameters to modify the feel of the spiral effect. Lots of
+future potential!</p>
+<p><img src="/post/canvas-cards/02-vertigo.png#canvasCard" /></p>
+</div>
+<div id="making-of" class="section level1">
+<h1>Making Of</h1>
+<video
+    id="vertigo"
+    class="video-js vjs-theme-forest canvasCard"
+    controls
+    preload="auto"
+    width="300"
+    height="500"
+    poster="/post/canvas-cards/02-vertigo.png"
+    data-setup="{}"
+  >
+<source src="/post/canvas-cards/02-vertigo.mp4" type="video/mp4" />
+<p class="vjs-no-js">
+To view this video please enable JavaScript, and consider upgrading to a
+web browser that
+<a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+</p>
+</video>
+</div>
+<div id="code" class="section level1">
+<h1>Code</h1>
+<pre class="r"><code>#&#39; Canvas 2
+#&#39;
+#&#39; @return
+#&#39; @export
+#&#39;
+#&#39; @examples
+#&#39; @import dplyr
+#&#39; @import tidyr
+#&#39; @import purrr
+#&#39; @importFrom glue glue
+canvas2 &lt;- function(
+  width = 300,
+  height = 500,
+  theta = -pi / 48,
+  scale = 1.15,
+  n_steps = 60,
+  background_color = &#39;#db451f&#39;,
+  file_name = &#39;canvas2&#39;,
+  ...
+  )
+{
+  plot_centre &lt;- c(width / 2, height / 2)
+
+  grid &lt;- tibble(id = 0:n_steps) %&gt;%
+    mutate(
+      polys = map(id,
+                  ~{
+                    square_from_centre(
+                      origin = c(0,0),
+                      height = (scale ** .x) * (height / 100),
+                      rotate = TRUE,
+                      theta = .x * theta
+                    )
+                  }
+      )
+    ) %&gt;%
+    unnest(polys) %&gt;%
+    rename(coords = polys)
+
+  plot &lt;- grid %&gt;%
+    ggplot(aes(x = map_dbl(coords, 1),
+               y = map_dbl(coords, 2),
+               group = factor(id))) +
+    geom_path(colour = &#39;white&#39;) +
+    theme_void() +
+    theme(
+      panel.background = element_rect(fill = background_color),
+      plot.background = element_rect(fill = background_color),
+      panel.grid = element_blank(),
+      panel.border = element_blank()
+      ) +
+    coord_equal(xlim = c(-width/2, width/2),
+                ylim = c(-height/2, height/2),
+                expand = FALSE)
+
+  save_plot(plot, file_name, height = height, width = width, ...)
+}</code></pre>
+</div>

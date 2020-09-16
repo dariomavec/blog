@@ -10,6 +10,10 @@
     <link href="/css/milk-responsive.min.css" rel="stylesheet">     
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all">
+    
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@videojs/themes@1/dist/forest/index.css" rel="stylesheet" />
+
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="">
     <link rel="canonical" href="/r-art-varsarely/">
@@ -65,11 +69,37 @@
 
 <div id="varsarely" class="section level1">
 <h1>Varsarely</h1>
-<p><img src="img/canvasCards/01-varsarely.png" /></p>
+<p>The first canvas card! It was fun experimenting with different ways of using
+<code>ggplot</code> to present a grid of squares. I settled on creating collections of points
+and using <code>geom_polygon()</code> to render them. This allows the use of standard
+<code>tidyverse</code> data operations when preparing the data, and should be a fairly
+powerful paradigm to work with going forward.</p>
+<p>Definitely took a few attempts to correctly set up the matrix multiplication for
+the rotation transformations, but was a lot of fun seeing the visible impacts of
+my screw ups.</p>
+<p><img src="/post/canvas-cards/01-varsarely.png#canvasCard" /></p>
 </div>
-<div id="creation-steps" class="section level1">
-<h1>Creation Steps</h1>
-<p><img src="img/canvasCards/01-varsarely.gif" /></p>
+<div id="making-of" class="section level1">
+<h1>Making Of</h1>
+<video
+    id="varsarely"
+    class="video-js vjs-theme-forest canvasCard"
+    controls
+    preload="auto"
+    width="300"
+    height="500"
+    poster="/post/canvas-cards/01-varsarely.png"
+    data-setup="{}"
+  >
+<source src="/post/canvas-cards/01-varsarely.mp4" type="video/mp4" />
+<p class="vjs-no-js">
+To view this video please enable JavaScript, and consider upgrading to a
+web browser that
+<a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+</p>
+</video>
 </div>
 <div id="code" class="section level1">
 <h1>Code</h1>
@@ -129,7 +159,7 @@ canvas1 &lt;- function(
 	    </div>
 	    
 		<nav id="pagination">
-			
+			<a class="prev" href="/r-art-vertigo/">Prev</a>
 			<a class="next" href="/making-art-with-r/">Next</a>
 		</nav>
 	<div id="disqus_thread"></div>
@@ -179,6 +209,7 @@ if (!doNotTrack) {
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/r.min.js"></script>
   
   <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
 
 </body>
 </html>

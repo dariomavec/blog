@@ -1,0 +1,100 @@
+---
+title: "R Art - Varsarely"
+author: "Dario Mavec"
+date: 2020-09-15
+categories: ["R"]
+tags: ["R", "Tidy Tuesday"]
+---
+
+# Varsarely
+
+The first canvas card! It was fun experimenting with different ways of using 
+`ggplot` to present a grid of squares. I settled on creating collections of points
+and using `geom_polygon()` to render them. This allows the use of standard
+`tidyverse` data operations when preparing the data, and should be a fairly 
+powerful paradigm to work with going forward.
+
+Definitely took a few attempts to correctly set up the matrix multiplication for
+the rotation transformations, but was a lot of fun seeing the visible impacts of
+my screw ups.
+
+![](/post/canvas-cards/01-varsarely.png#canvasCard) 
+
+# Making Of
+
+<video
+    id="varsarely"
+    class="video-js vjs-theme-forest canvasCard"
+    controls
+    preload="auto"
+    width="300"
+    height="500"
+    poster="/post/canvas-cards/01-varsarely.png"
+    data-setup="{}"
+  >
+    <source src="/post/canvas-cards/01-varsarely.mp4" type="video/mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+  </video>
+
+
+# Code
+
+```{r eval=FALSE}
+#' Canvas 1
+#' @import dplyr
+#' @import tidyr
+#' @import purrr
+#' @importFrom glue glue
+canvas1 <- function(
+  width = 300,
+  height = 500,
+  squareHeight = 10,
+  gutter = 10,
+  background_color = '#FDF5E6',
+  square_color = '#933A16',
+  square_color_shift = 'gray40',
+  file_name = 'canvas1',
+  ...
+  )
+{
+  plot_centre <- c(width / 2, height / 2)
+
+  grid <- expand_grid(
+    x = seq(0, width, by = squareHeight),
+    y = seq(0, height, by = squareHeight)
+  ) %>%
+    mutate(
+      origin = map2(x, y, ~c(.x, .y)),
+      # likelihood = sqrt((plot_centre[1] - x) ** 2 +
+      #                   (plot_centre[2] - y) ** 2),
+      # rotate = runif(n()) > (likelihood / max(likelihood)),
+      rotate = runif(n()) < 0.05,
+      square = map2(origin, rotate, ~square_from_centre(.x, height = squareHeight - gutter / 2, rotate = .y))
+    ) %>%
+    unnest(square) %>%
+    rename(coords = square)
+
+  plot <- grid %>%
+    ggplot(aes(x = map_dbl(coords, 1),
+               y = map_dbl(coords, 2),
+               group = paste0(x, '-', y))) +
+    geom_polygon(aes(fill = rotate), show.legend = FALSE) +
+    scale_fill_manual(values = c(square_color, square_color_shift)) +
+    theme_void() +
+    theme(
+      panel.background = element_rect(fill = background_color),
+      plot.background = element_rect(fill = background_color),
+      panel.grid = element_blank(),
+      panel.border = element_blank()
+      ) +
+    coord_equal()
+
+  save_plot(plot, file_name, height = height, width = width)
+}
+```
