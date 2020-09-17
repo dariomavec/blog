@@ -1,0 +1,19 @@
+<video
+    id="{{ .Get "id" }}"
+    class="video-js vjs-theme-forest canvasCard"
+    controls
+    preload="auto"
+    width="300"
+    height="500"
+    poster="/post/canvas-cards/{{ .Get "id" }}.png"
+    data-setup="{}"
+  >
+    <source src="/post/canvas-cards/{{ .Get "id" }}.mp4" type="video/mp4" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank"
+        >supports HTML5 video</a
+      >
+    </p>
+</video>

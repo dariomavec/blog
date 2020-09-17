@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Random Strolls</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Random Strolls</description>
+    <title>Canvas Card on Random Strolls</title>
+    <link>/tags/canvas-card/</link>
+    <description>Recent content in Canvas Card on Random Strolls</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 17 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/canvas-card/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -39,27 +39,6 @@ Definitely took a few attempts to correctly set up the matrix multiplication for
       <guid>/r-art-vertigo/</guid>
       <description>Vertigo Since I already had done the work for generating squares and performing rotations, this card was pretty straightforward. It was a lot of fun playing with the different tweaking parameters to modify the feel of the spiral effect. Lots of future potential!
  Making Of To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video  Code #&amp;#39; Canvas 2 #&amp;#39; #&amp;#39; @return #&amp;#39; @export #&amp;#39; #&amp;#39; @examples #&amp;#39; @import dplyr #&amp;#39; @import tidyr #&amp;#39; @import purrr #&amp;#39; @importFrom glue glue canvas2 &amp;lt;- function( width = 300, height = 500, theta = -pi / 48, scale = 1.</description>
-    </item>
-    
-    <item>
-      <title>Making Art with R</title>
-      <link>/making-art-with-r/</link>
-      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/making-art-with-r/</guid>
-      <description>Canvas Cards As a side project this year, I thought it would be fun to play around with making art in R. Because I’m not all that original, I will use an existing developer’s project as the guide for my development. In particular, Canvas Cards will be the basis of inspiration for each card.
-To stop this from being a pure copy paste exercise, I want to establish some constraints for this project:</description>
-    </item>
-    
-    <item>
-      <title>R, logger and working smarter</title>
-      <link>/r-logger-and-working-smarter/</link>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/r-logger-and-working-smarter/</guid>
-      <description>The Forest Imagine with me a moment.
-You’ve spent all day writing killer R code. It has been a blur of data munging, model tweaks and picture perfect analysis outputs, using test data.
-The clock hits 6pm, and you set your code running against the full dataset. By your estimate, it should take about 8 hours to run. Perfect! You can start fresh in the morning with a big, strong coffee.</description>
     </item>
     
   </channel>

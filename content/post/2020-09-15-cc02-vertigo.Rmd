@@ -3,40 +3,24 @@ title: "R Art - Vertigo"
 author: "Dario Mavec"
 date: 2020-09-16
 categories: ["R"]
-tags: ["R", "Tidy Tuesday"]
+tags: ["R", "Art", "Canvas Card"]
+params:
+  title: 'Vertigo'
+  id: '02-vertigo'
 ---
 
-# Vertigo
+# `r params$title`
 
 Since I already had done the work for generating squares and performing rotations,
 this card was pretty straightforward. It was a lot of fun playing with the
 different tweaking parameters to modify the feel of the spiral effect. Lots of
 future potential!
 
-![](/post/canvas-cards/02-vertigo.png#canvasCard) 
-
+`r paste0('![](/post/canvas-cards/', params$id, '.png#canvasCard)')` 
+ 
 # Making Of
 
-<video
-    id="vertigo"
-    class="video-js vjs-theme-forest canvasCard"
-    controls
-    preload="auto"
-    width="300"
-    height="500"
-    poster="/post/canvas-cards/02-vertigo.png"
-    data-setup="{}"
-  >
-    <source src="/post/canvas-cards/02-vertigo.mp4" type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
-      >
-    </p>
-  </video>
-
+`r blogdown::shortcode('canvasVideo', id = params$id)`
 
 # Code
 

@@ -1,7 +1,7 @@
 	<!doctype html>
 <html lang="en">
   <head>
-    <title>R Art - Varsarely  - Random Strolls | Dario Mavec</title>
+    <title>R Art - Bergdorf  - Random Strolls | Dario Mavec</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
@@ -16,7 +16,7 @@
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="">
-    <link rel="canonical" href="/r-art-varsarely/">
+    <link rel="canonical" href="/r-art-bergdorf/">
 
     
     <link href="/rss.xml" type="application/atom+xml" rel="alternate" title="Random Strolls">
@@ -50,8 +50,8 @@
 	    
 	  <div class="post">
 	    <header class="post-header">
-	        <h1><a href="/r-art-varsarely/">R Art - Varsarely</a></h1>
-	        <div class="post-time">September 16 2020</div>
+	        <h1><a href="/r-art-bergdorf/">R Art - Bergdorf</a></h1>
+	        <div class="post-time">September 17 2020</div>
 	    </header>
 	    <div class="post-after">
 	        <div class="tags">
@@ -69,31 +69,26 @@
 	        
 
 
-<div id="varsarely" class="section level1">
-<h1>Varsarely</h1>
-<p>The first canvas card! It was fun experimenting with different ways of using
-<code>ggplot</code> to present a grid of squares. I settled on creating collections of points
-and using <code>geom_polygon()</code> to render them. This allows the use of standard
-<code>tidyverse</code> data operations when preparing the data, and should be a fairly
-powerful paradigm to work with going forward.</p>
-<p>Definitely took a few attempts to correctly set up the matrix multiplication for
-the rotation transformations, but was a lot of fun seeing the visible impacts of
-my screw ups.</p>
-<p><img src="/post/canvas-cards/01-varsarely.png#canvasCard" /></p>
+<div id="bergdorf" class="section level1">
+<h1>Bergdorf</h1>
+<p>This was an interesting exercise as it was much more constructed than the
+last two cards. It is also the closest replication of Luke’s original card. The
+code for diamond and circle shapes may get re-used in the future.</p>
+<p><img src="/post/canvas-cards/03-bergdorf.png#canvasCard" /></p>
 </div>
 <div id="making-of" class="section level1">
 <h1>Making Of</h1>
 <video
-    id="01-varsarely"
+    id="03-bergdorf"
     class="video-js vjs-theme-forest canvasCard"
     controls
     preload="auto"
     width="300"
     height="500"
-    poster="/post/canvas-cards/01-varsarely.png"
+    poster="/post/canvas-cards/03-bergdorf.png"
     data-setup="{}"
   >
-    <source src="/post/canvas-cards/01-varsarely.mp4" type="video/mp4" />
+    <source src="/post/canvas-cards/03-bergdorf.mp4" type="video/mp4" />
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a
       web browser that
@@ -105,46 +100,79 @@ my screw ups.</p>
 </div>
 <div id="code" class="section level1">
 <h1>Code</h1>
-<pre class="r"><code>#&#39; Canvas 1
+<pre class="r"><code>#&#39; Canvas 3
+#&#39;
+#&#39; @return
+#&#39; @export
+#&#39;
+#&#39; @examples
 #&#39; @import dplyr
 #&#39; @import tidyr
 #&#39; @import purrr
+#&#39; @import ggforce
 #&#39; @importFrom glue glue
-canvas1 &lt;- function(
+canvas03 &lt;- function(
   width = 300,
-  height = 500,
-  squareHeight = 10,
-  gutter = 10,
-  background_color = &#39;#FDF5E6&#39;,
-  square_color = &#39;#933A16&#39;,
-  square_color_shift = &#39;gray40&#39;,
-  file_name = &#39;canvas1&#39;,
+  height = 600,
+  background_color = &#39;#8D8741&#39;,
+  line_color = &#39;#FBEEC1&#39;,
+  file_name = &#39;canvas03&#39;,
   ...
   )
 {
-  plot_centre &lt;- c(width / 2, height / 2)
+  plot_centre &lt;- c(0, 0)
 
-  grid &lt;- expand_grid(
-    x = seq(0, width, by = squareHeight),
-    y = seq(0, height, by = squareHeight)
+  circles &lt;- expand_grid(
+    x = c(-width/2, width/2), y = c(-height/2, height/2),
+    r = 1:4 * 20
   ) %&gt;%
-    mutate(
-      origin = map2(x, y, ~c(.x, .y)),
-      # likelihood = sqrt((plot_centre[1] - x) ** 2 +
-      #                   (plot_centre[2] - y) ** 2),
-      # rotate = runif(n()) &gt; (likelihood / max(likelihood)),
-      rotate = runif(n()) &lt; 0.05,
-      square = map2(origin, rotate, ~square_from_centre(.x, height = squareHeight - gutter / 2, rotate = .y))
-    ) %&gt;%
-    unnest(square) %&gt;%
-    rename(coords = square)
+    bind_rows(
+      expand_grid(
+        x = 0, y = 0,
+        r = 1:4 * 20
+      )
+    )
 
-  plot &lt;- grid %&gt;%
-    ggplot(aes(x = map_dbl(coords, 1),
-               y = map_dbl(coords, 2),
-               group = paste0(x, &#39;-&#39;, y))) +
-    geom_polygon(aes(fill = rotate), show.legend = FALSE) +
-    scale_fill_manual(values = c(square_color, square_color_shift)) +
+  lines &lt;- tibble(
+    x = c(-4, -1, 1, 4) * 20,
+    y = rep(0, 4),
+    id = rep(1:2, each = 2)
+  )
+
+  diamond &lt;- function(x, y, r) {
+    list(
+      c(x, y+r),
+      c(x+r/2, y),
+      c(x, y-r),
+      c(x-r/2, y),
+      c(x, y+r)
+    )
+  }
+
+  diamonds &lt;- expand_grid(
+      x = 0, y = 0,
+      r = 180 + 1:3 * 40
+    ) %&gt;%
+    bind_rows(
+      expand_grid(
+        x = c(-width/2, width/2), y = 0,
+        r = 300
+      )
+    ) %&gt;%
+    mutate(
+      id = paste0(x, y, r),
+      points = pmap(list(x, y, r), diamond)) %&gt;%
+    unnest(points)
+
+  plot &lt;- ggplot() +
+    # geom_point(color = line_color) +
+    geom_circle(aes(x0 = x, y0 = y, r = r), data = circles, color = line_color) +
+    geom_path(aes(x = map_dbl(points, 1),
+                     y = map_dbl(points, 2),
+                     group = id),
+                 data = diamonds,
+                 color = line_color) +
+    geom_path(aes(x, y, group = id), data = lines, color = line_color) +
     theme_void() +
     theme(
       panel.background = element_rect(fill = background_color),
@@ -152,17 +180,19 @@ canvas1 &lt;- function(
       panel.grid = element_blank(),
       panel.border = element_blank()
       ) +
-    coord_equal()
+    coord_equal(xlim = c(-width/2, width/2),
+                ylim = c(-height/2, height/2),
+                expand = FALSE)
 
-  save_plot(plot, file_name, height = height, width = width)
+  save_plot(plot, file_name, height = height, width = width, ...)
 }</code></pre>
 </div>
 
 	    </div>
 	    
 		<nav id="pagination">
-			<a class="prev" href="/r-art-bergdorf/">Prev</a>
-			<a class="next" href="/r-art-vertigo/">Next</a>
+			
+			<a class="next" href="/r-art-varsarely/">Next</a>
 		</nav>
 	<div id="disqus_thread"></div>
 <script type="application/javascript">

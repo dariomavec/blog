@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Random Strolls</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Random Strolls</description>
+    <title>Art on Random Strolls</title>
+    <link>/tags/art/</link>
+    <description>Recent content in Art on Random Strolls</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 17 Sep 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/art/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -49,17 +49,6 @@ Definitely took a few attempts to correctly set up the matrix multiplication for
       <guid>/making-art-with-r/</guid>
       <description>Canvas Cards As a side project this year, I thought it would be fun to play around with making art in R. Because I’m not all that original, I will use an existing developer’s project as the guide for my development. In particular, Canvas Cards will be the basis of inspiration for each card.
 To stop this from being a pure copy paste exercise, I want to establish some constraints for this project:</description>
-    </item>
-    
-    <item>
-      <title>R, logger and working smarter</title>
-      <link>/r-logger-and-working-smarter/</link>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/r-logger-and-working-smarter/</guid>
-      <description>The Forest Imagine with me a moment.
-You’ve spent all day writing killer R code. It has been a blur of data munging, model tweaks and picture perfect analysis outputs, using test data.
-The clock hits 6pm, and you set your code running against the full dataset. By your estimate, it should take about 8 hours to run. Perfect! You can start fresh in the morning with a big, strong coffee.</description>
     </item>
     
   </channel>

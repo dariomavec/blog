@@ -6,30 +6,10 @@
     <description>Recent content in Tidy Tuesday on Random Strolls</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/tidy-tuesday/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>R Art - Vertigo</title>
-      <link>/r-art-vertigo/</link>
-      <pubDate>Wed, 16 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/r-art-vertigo/</guid>
-      <description>Vertigo Since I already had done the work for generating squares and performing rotations, this card was pretty straightforward. It was a lot of fun playing with the different tweaking parameters to modify the feel of the spiral effect. Lots of future potential!
- Making Of To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video  Code #&amp;#39; Canvas 2 #&amp;#39; #&amp;#39; @return #&amp;#39; @export #&amp;#39; #&amp;#39; @examples #&amp;#39; @import dplyr #&amp;#39; @import tidyr #&amp;#39; @import purrr #&amp;#39; @importFrom glue glue canvas2 &amp;lt;- function( width = 300, height = 500, theta = -pi / 48, scale = 1.</description>
-    </item>
-    
-    <item>
-      <title>R Art - Varsarely</title>
-      <link>/r-art-varsarely/</link>
-      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/r-art-varsarely/</guid>
-      <description>Varsarely The first canvas card! It was fun experimenting with different ways of using ggplot to present a grid of squares. I settled on creating collections of points and using geom_polygon() to render them. This allows the use of standard tidyverse data operations when preparing the data, and should be a fairly powerful paradigm to work with going forward.
-Definitely took a few attempts to correctly set up the matrix multiplication for the rotation transformations, but was a lot of fun seeing the visible impacts of my screw ups.</description>
-    </item>
     
     <item>
       <title>Making Art with R</title>
